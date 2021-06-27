@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timer</title>
+  </head>
+  <style>
+    body {
+      /* text-align: center; */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #283149;
+    }
+    h1 {
+      font-size: 5rem;
+      color: #dbedf3;
+      font-family: "Arvo", cursive;
+      text-shadow: 3px 0 #da0463;
+    }
+    #drum {
+      outline: none;
+      border: 10px solid #404b69;
+      font-size: 5rem;
+      font-family: "Arvo", cursive;
+      line-height: 2;
+      font-weight: 900;
+      color: #da0463;
+      text-shadow: 3px 0 #dbedf3;
+      border-radius: 15px;
+      display: inline-block;
+      width: 150px;
+      height: 150px;
+      text-align: center;
+      margin: 10px;
+      background-color: white;
+    }
+    .btn {
+      padding: 10px;
+      border: 5px solid black;
+      border-radius: 15px;
+      background-color: crimson;
+      color: white;
+      font-size: 1.2rem;
+      width: 100px;
+      font-weight: bolder;
+      margin: 4px;
+      cursor: pointer;
+    }
+    .img1 {
+      width: 15%;
+      margin-left: 521px;
+      margin-top: -300px;
+      transform: rotate(-12deg);
+      border-radius: 45px;
+    }
+    .img2{
+      width: 15%;
+      margin-left: -571px;
+      margin-top: -150px;
+      transform: rotate(-12deg);
+      border-radius: 45px;
+    }
+  </style>
+  <body>
+    <h1>Timer⏳</h1>
+    <p id="drum"></p>
+    <button class="btn" id="myBtn" onclick="timer();">START</button>
+    <button class="btn" onclick="stoptimer();">STOP</button>
+    <img class="img1" src="time.gif" alt="" />
+    <img class="img2" src="time.gif" alt="" />
+    <script>
+      var myvar = 0;
+      var i = 20;
+      function timer() {
+        document.getElementById("myBtn").disabled = true;
+        myvar = setInterval(mytimer, 1000);
+      }
+      function mytimer() {
+        if (i >= 0) {
+          document.getElementById("drum").innerHTML = i;
+          i = i - 1;
+          if (i == -1) {
+            document.getElementById("myBtn").disabled = false;
+            clearInterval(myvar);
+            alert("Hey Buddy! Your Time is UP Now 😄");
+            i = 20;
+          }
+        }
+      }
+
+      function stoptimer() {
+        clearInterval(myvar);
+        document.getElementById("myBtn").disabled = false;
+      }
+    </script>
+  </body>
+</html>
